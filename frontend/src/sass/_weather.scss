@@ -142,3 +142,17 @@
 		}
 	}
 }
+
+@media screen and (max-width: 650px) {
+	.main {
+		flex-direction: column;
+
+		.motto {
+			align-items: center;
+			text-align: center;
+			width: 100%;
+			margin-right: 0;
+			padding: 0 2em;
+		}
+	}
+}
