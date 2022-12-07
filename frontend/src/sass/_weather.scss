@@ -1,0 +1,144 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap");
+@import "./variables";
+
+.main {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	gap: 4em;
+
+	.motto {
+		display: flex;
+		flex-direction: column;
+		text-align: left;
+		width: 30%;
+		font-size: 50px;
+		font-size: 2em;
+		transition: 0.3s color;
+
+		&-links {
+			margin-top: 2em;
+
+			a {
+				user-select: none;
+				border-radius: 5px;
+				text-decoration: none;
+				font-size: 1rem;
+				padding: 1rem 2rem;
+				transition: 0.3s;
+				transition-property: background, color;
+
+				&:first-child {
+					margin-right: 1em;
+				}
+			}
+		}
+	}
+
+	.card {
+		display: flex;
+		flex-direction: column;
+		padding: 3em;
+		border-radius: 15px;
+		transition: 0.3s;
+		transition-property: background, color;
+
+		.city {
+			font-size: 3.5em;
+		}
+
+		.time {
+			display: flex;
+			align-items: center;
+
+			&-icon {
+				display: flex;
+				align-items: center;
+				padding: 10px;
+			}
+			p {
+				font-size: 2em;
+			}
+		}
+
+		.params {
+			&-temp {
+				font-size: 5em;
+				margin-top: 0.5em;
+			}
+
+			&-weather {
+				display: flex;
+				align-items: center;
+
+				&-desc {
+					font-size: 1.2em;
+				}
+			}
+
+			&-specs {
+				margin-top: 2em;
+				padding-left: 1em;
+
+				&-box {
+					display: flex;
+					align-items: center;
+					margin-top: 0.2em;
+
+					p {
+						margin-left: 0.5em;
+					}
+				}
+			}
+		}
+
+		.form {
+			width: 100%;
+			margin-top: 3em;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+
+			&-search {
+				font-family: "Montserrat", sans-serif;
+				padding: 1em 1.5em;
+				border: none;
+				border-radius: 100px;
+				outline: none;
+				font-size: 1em;
+				transition: 0.3s;
+				transition-property: background, color;
+			}
+
+			&-button {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				font-size: 1.2em;
+				padding: 0.88em;
+				border: none;
+				outline: none;
+				cursor: pointer;
+				border-radius: 100px;
+				margin-left: 1em;
+				transition: 0.3s;
+				transition-property: background, color;
+			}
+		}
+	}
+}
+
+@media screen and (max-width: 1100px) {
+	.main {
+		flex-direction: column;
+
+		.motto {
+			align-items: center;
+			text-align: center;
+			width: 100%;
+			margin-right: 0;
+			padding: 0 2em;
+		}
+	}
+}

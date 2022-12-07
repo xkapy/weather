@@ -1,0 +1,589 @@
+@import "./_variables.scss";
+@import "./_nav";
+@import "./_footer";
+@import "./_weather.scss";
+@import "./register";
+@import "./login";
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+::-webkit-scrollbar-track {
+	box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+	background-color: #2e2e2e;
+}
+
+::-webkit-scrollbar {
+	width: 10px;
+	background-color: #ffffff;
+}
+
+::-webkit-scrollbar-thumb {
+	background-color: #a3a3a3;
+	border-radius: 100px;
+}
+
+body {
+	font-family: "Montserrat", sans-serif;
+	font-weight: 700;
+	background: #000;
+}
+
+.container {
+	position: relative;
+	z-index: 1;
+	width: 100%;
+	transition: 0.3s background;
+
+	.content {
+		width: 100%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		padding: 4em 0 10em 0;
+	}
+}
+
+#dark,
+#light {
+	&::after {
+		content: "";
+		position: absolute;
+		top: 0;
+		right: 0;
+		width: 40%;
+		height: 100%;
+		z-index: -1;
+		transition: 0.3s background;
+	}
+}
+
+#dark {
+	background: #000;
+
+	&::after {
+		background: #34385b;
+	}
+
+	.nav {
+		&-burger {
+			color: #fff;
+		}
+
+		&-title {
+			a {
+				color: #fff;
+			}
+		}
+
+		&-links {
+			&-bar {
+				.home-button {
+					a {
+						color: #fff;
+					}
+				}
+
+				.about-button {
+					a {
+						color: #fff;
+					}
+				}
+			}
+
+			.login-button {
+				a {
+					background: #fff;
+					border: #fff solid 2px;
+					color: #000;
+
+					&:hover {
+						background: none;
+						color: #fff;
+					}
+				}
+			}
+		}
+	}
+
+	.main {
+		color: #fff;
+
+		.motto {
+			&-links {
+				a {
+					color: #fff;
+
+					&:nth-child(2) {
+						background: #232323;
+
+						&:hover {
+							background: #303030;
+						}
+					}
+
+					&:first-child {
+						background: #34385b;
+
+						&:hover {
+							background: #3d496b;
+						}
+					}
+				}
+			}
+		}
+
+		.card {
+			color: #fff;
+			background: rgb(15, 15, 15);
+
+			.form {
+				&-search {
+					color: #fff;
+					background: rgb(23, 23, 23);
+
+					::placeholder {
+						color: rgb(170, 170, 170);
+					}
+				}
+
+				&-button {
+					background: rgb(23, 23, 23);
+					color: rgb(170, 170, 170);
+
+					&:hover {
+						background: rgb(32, 32, 32);
+					}
+				}
+			}
+		}
+	}
+
+	.register {
+		&-side {
+			color: #fff;
+
+			span {
+				color: rgb(183, 189, 244);
+			}
+		}
+
+		&-form {
+			background: rgb(15, 15, 15);
+
+			&-header {
+				h2 {
+					color: #fff;
+				}
+			}
+
+			&-label {
+				color: rgb(183, 189, 244);
+
+				input {
+					color: rgb(225, 225, 225);
+					background: rgb(25, 25, 25);
+				}
+			}
+
+			&-button {
+				color: #fff;
+				background: #ab5036;
+
+				&:hover {
+					background: #c6684e;
+				}
+			}
+
+			&-already {
+				color: rgb(154, 154, 154);
+
+				a {
+					color: #ab5036;
+
+					&:hover {
+						color: #c6684e;
+					}
+				}
+			}
+		}
+	}
+
+	.login {
+		&-side {
+			color: #fff;
+
+			span {
+				color: rgb(183, 189, 244);
+			}
+		}
+
+		&-form {
+			background: rgb(15, 15, 15);
+
+			&-header {
+				h2 {
+					color: #fff;
+				}
+			}
+
+			&-label {
+				color: rgb(183, 189, 244);
+
+				input {
+					color: rgb(225, 225, 225);
+					background: rgb(25, 25, 25);
+				}
+			}
+
+			&-button {
+				color: #fff;
+				background: #ab5036;
+
+				&:hover {
+					background: #c6684e;
+				}
+			}
+
+			&-already {
+				color: rgb(154, 154, 154);
+
+				a {
+					color: #ab5036;
+
+					&:hover {
+						color: #c6684e;
+					}
+				}
+			}
+		}
+	}
+
+	.footer {
+		color: #fff;
+		background: rgb(0, 0, 0);
+
+		&-contact {
+			button {
+				color: #fff;
+				background: rgba(0, 0, 0, 0);
+			}
+		}
+
+		&-socials {
+			&-other {
+				li {
+					border-right: 2px solid #fff;
+
+					&:last-child {
+						border: none;
+					}
+
+					a {
+						color: #fff;
+					}
+				}
+			}
+
+			&-buttons {
+				button {
+					background: rgba(0, 0, 0, 0);
+					color: #fff;
+				}
+			}
+		}
+	}
+}
+
+#light {
+	background: #fff;
+
+	&::after {
+		background: #f6e58d;
+	}
+
+	.nav {
+		&-burger {
+			color: #000;
+		}
+
+		&-title {
+			a {
+				color: #000;
+			}
+		}
+
+		&-links {
+			&-bar {
+				.home-button {
+					a {
+						color: #000;
+					}
+				}
+
+				.about-button {
+					a {
+						color: #000;
+					}
+				}
+			}
+
+			.login-button {
+				a {
+					background: #000;
+					border: #000 solid 2px;
+					color: #fff;
+
+					&:hover {
+						background: none;
+						color: #000;
+					}
+				}
+			}
+		}
+	}
+
+	.main {
+		color: #000;
+
+		.motto {
+			&-links {
+				a {
+					color: #000;
+
+					&:nth-child(2) {
+						background: #eeeeee;
+
+						&:hover {
+							background: #e1e1e1;
+						}
+					}
+
+					&:first-child {
+						background: #f6e58d;
+
+						&:hover {
+							background: #f2da5e;
+						}
+					}
+				}
+			}
+		}
+
+		.card {
+			color: #000;
+			background: rgb(238, 238, 238);
+
+			.form {
+				&-search {
+					color: #000;
+					background: rgb(222, 222, 222);
+
+					&::placeholder {
+						color: rgb(100, 100, 100);
+					}
+				}
+
+				&-button {
+					background: rgb(222, 222, 222);
+					color: rgb(100, 100, 100);
+
+					&:hover {
+						background: rgb(209, 209, 209);
+					}
+				}
+			}
+		}
+	}
+
+	.register {
+		&-side {
+			color: #000;
+
+			span {
+				color: #ec6e4c;
+			}
+		}
+
+		&-form {
+			background: rgb(238, 238, 238);
+
+			&-header {
+				h2 {
+					color: #000;
+				}
+			}
+
+			&-label {
+				color: #ec6e4c;
+
+				input {
+					color: #000;
+					background: rgb(222, 222, 222);
+				}
+			}
+
+			&-button {
+				color: #000;
+				background: rgb(183, 189, 244);
+
+				&:hover {
+					background: #a1a9f1;
+				}
+			}
+
+			&-already {
+				color: rgb(98, 98, 98);
+
+				a {
+					color: #a1a9f1;
+
+					&:hover {
+						color: #758bea;
+					}
+				}
+			}
+		}
+	}
+
+	.login {
+		&-side {
+			color: #000;
+
+			span {
+				color: #ec6e4c;
+			}
+		}
+
+		&-form {
+			background: rgb(238, 238, 238);
+
+			&-header {
+				h2 {
+					color: #000;
+				}
+			}
+
+			&-label {
+				color: #ec6e4c;
+
+				input {
+					color: #000;
+					background: rgb(222, 222, 222);
+				}
+			}
+
+			&-button {
+				color: #000;
+				background: rgb(183, 189, 244);
+
+				&:hover {
+					background: #a1a9f1;
+				}
+			}
+
+			&-already {
+				color: rgb(98, 98, 98);
+
+				a {
+					color: #a1a9f1;
+
+					&:hover {
+						color: #758bea;
+					}
+				}
+			}
+		}
+	}
+
+	.footer {
+		color: #000;
+		background: #fff;
+
+		&-contact {
+			button {
+				color: #000;
+				background: rgba(255, 255, 255, 0);
+			}
+		}
+
+		&-socials {
+			&-other {
+				li {
+					border-right: 2px solid #000;
+
+					&:last-child {
+						border: none;
+					}
+
+					a {
+						color: #000;
+					}
+				}
+			}
+
+			&-buttons {
+				button {
+					background: rgba(255, 255, 255, 0);
+					color: #000;
+				}
+			}
+		}
+	}
+}
+
+@media screen and (max-width: 1100px) {
+	#dark,
+	#light {
+		&::after {
+			display: none;
+		}
+	}
+
+	#dark {
+		.nav {
+			background: rgba(0, 0, 0, 0.7);
+
+			.hidden {
+				background: rgba(0, 0, 0, 0.7);
+			}
+
+			.shown {
+				background: rgba(0, 0, 0, 0.7);
+			}
+		}
+
+		.normal {
+			background: rgba(0, 0, 0, 0.7);
+		}
+
+		.expand {
+			background: rgba(255, 255, 255, 0);
+		}
+	}
+
+	#light {
+		.nav {
+			background: rgba(255, 255, 255, 0.7);
+
+			.hidden {
+				background: rgba(255, 255, 255, 0.7);
+			}
+
+			.shown {
+				background: rgba(255, 255, 255, 0.7);
+			}
+		}
+
+		.normal {
+			background: rgba(255, 255, 255, 0.7);
+		}
+
+		.expand {
+			background: rgba(255, 255, 255, 0);
+		}
+	}
+}
