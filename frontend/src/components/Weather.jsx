@@ -8,6 +8,7 @@ const Weather = () => {
 	const [time, setTime] = useState(new Date());
 	const [city, setCity] = useState("New York");
 	const [message, setMessage] = useState("");
+	const apiKey = import.meta.env.VITE_APP_API_KEY;
 
 	const formRef = useRef();
 
@@ -42,7 +43,7 @@ const Weather = () => {
 		}
 		const controller = new AbortController();
 
-		fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=d8bbc30f35a10a28d22aaea01aef61c3`, {
+		fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`, {
 			signal: controller.signal,
 		})
 			.then((res) => {
@@ -119,8 +120,9 @@ const Weather = () => {
 						</div>
 					</div>
 				</div>
+				<p className="message">{message}</p>
 				<form className="form" onSubmit={formSubmitHandler}>
-					<input type="text" className="form-search" placeholder={message || "Search"} ref={formRef} />
+					<input type="text" className="form-search" placeholder="Search" ref={formRef} />
 					<button type="submit" className="form-button">
 						<BiSearch />
 					</button>

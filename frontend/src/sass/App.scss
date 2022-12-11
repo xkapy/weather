@@ -140,6 +140,10 @@ body {
 			color: #fff;
 			background: rgb(15, 15, 15);
 
+			.message {
+				color: #a04b4b;
+			}
+
 			.form {
 				&-search {
 					color: #fff;
@@ -377,6 +381,10 @@ body {
 			color: #000;
 			background: rgb(238, 238, 238);
 
+			.message {
+				color: #fa7777;
+			}
+
 			.form {
 				&-search {
 					color: #000;
@@ -404,7 +412,7 @@ body {
 			color: #000;
 
 			span {
-				color: #ec6e4c;
+				color: #edcc20;
 			}
 		}
 
@@ -418,7 +426,7 @@ body {
 			}
 
 			&-label {
-				color: #ec6e4c;
+				color: #edcc20;
 
 				input {
 					color: #000;
@@ -454,7 +462,7 @@ body {
 			color: #000;
 
 			span {
-				color: #ec6e4c;
+				color: #edcc20;
 			}
 		}
 
@@ -468,7 +476,7 @@ body {
 			}
 
 			&-label {
-				color: #ec6e4c;
+				color: #edcc20;
 
 				input {
 					color: #000;

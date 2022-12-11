@@ -63,6 +63,8 @@
 		}
 
 		.params {
+			margin-bottom: 1.5em;
+
 			&-temp {
 				font-size: 5em;
 				margin-top: 0.5em;
@@ -93,9 +95,15 @@
 			}
 		}
 
+		.message {
+			height: 25px;
+			font-weight: 600;
+			padding-left: 1.1em;
+			font-size: 0.9em;
+		}
+
 		.form {
 			width: 100%;
-			margin-top: 3em;
 			display: flex;
 			align-items: center;
 			justify-content: center;
