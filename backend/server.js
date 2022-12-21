@@ -15,6 +15,10 @@ db.connect((error) => {
 
 app.use(cors());
 
+app.get("/", (req, res) => {
+	res.json({ message: "welcome" });
+});
+
 app.listen(PORT, (error) => {
 	if (error) throw error;
 	console.log(`app is running on port ${PORT}`);
