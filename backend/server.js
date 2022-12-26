@@ -7,17 +7,19 @@ import dotenv from "dotenv";
 dotenv.config({ path: "./.env" });
 
 import { db } from "./db/database.js";
+import { register } from "./auth/register.js";
+import { login } from "./auth/login.js";
 
 db.connect((error) => {
-	if (error) console.log("Cannot connect to database");
+	if (error) throw error;
 	else console.log("Connected to database");
 });
 
+app.use(express.json());
 app.use(cors());
 
-app.get("/", (req, res) => {
-	res.json({ message: "welcome" });
-});
+app.post("/register", register);
+app.post("/login", login);
 
 app.listen(PORT, (error) => {
 	if (error) throw error;

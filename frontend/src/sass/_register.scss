@@ -60,9 +60,16 @@
 			}
 		}
 
+		&-message {
+			font-weight: 500;
+			font-size: 0.8em;
+			margin-top: 1em;
+			height: 5px;
+			color: rgb(98, 48, 48);
+		}
+
 		&-button {
 			cursor: pointer;
-			margin-top: 2em;
 			outline: none;
 			border: none;
 			font-family: "Montserrat", sans-serif;

@@ -1,4 +1,5 @@
 import React from "react";
+import Axios from "axios";
 import Layout from "../components/layout/Layout";
 import { useState } from "react";
 import { Link } from "react-router-dom";
@@ -8,12 +9,28 @@ import { TbRepeat } from "react-icons/tb";
 import useFetch from "../hooks/useFetch";
 
 const Login = () => {
-	const [city, setCity] = useState("Honolulu");
+	const [name, setName] = useState("");
+	const [password, setPassword] = useState("");
+	const [loginStatus, setLoginStatus] = useState("");
 
-	const { data, loading, error } = useFetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=d8bbc30f35a10a28d22aaea01aef61c3`);
+	const url = import.meta.env.VITE_APP_URL;
+
+	const [temp, setTemp] = useState("Honolulu");
+	const { data, loading, error } = useFetch(`https://api.openweathermap.org/data/2.5/weather?q=${temp}&units=metric&appid=d8bbc30f35a10a28d22aaea01aef61c3`);
 
 	if (loading) return <div>loading</div>;
 	if (error) console.log(error);
+
+	const login = (e) => {
+		e.preventDefault();
+
+		Axios.post(`${url}/login`, {
+			name: name,
+			password: password,
+		}).then((response) => {
+			setLoginStatus(response.data.message);
+		});
+	};
 
 	return (
 		<Layout>
@@ -29,13 +46,13 @@ const Login = () => {
 					</header>
 					<label htmlFor="name" className="login-form-label">
 						<RiUser3Line />
-						<input type="text" name="name" id="name" placeholder="username" />
+						<input onChange={(e) => setName(e.target.value)} type="text" name="name" id="name" placeholder="username" />
 					</label>
 					<label htmlFor="password" className="login-form-label">
 						<RiLockPasswordLine />
-						<input type="password" name="password" id="password" placeholder="password" />
+						<input onChange={(e) => setPassword(e.target.value)} type="password" name="password" id="password" placeholder="password" />
 					</label>
-					<button className="login-form-button" type="submit">
+					<button onClick={login} className="login-form-button" type="submit">
 						log in
 					</button>
 					<p className="login-form-already">
