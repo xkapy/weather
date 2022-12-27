@@ -1,8 +1,10 @@
 import { db } from "../db/database.js";
-import bcrypt from "bcrypt";
+import * as bcrypt from "bcrypt";
+import { v4 as uuidv4 } from "uuid";
 import dotenv from "dotenv";
-import jwt from "jsonwebtoken";
 dotenv.config({ path: "./.env" });
+
+const sessions = {};
 
 export const login = async (req, res) => {
 	const { name, password } = req.body;
@@ -10,30 +12,23 @@ export const login = async (req, res) => {
 	if (!name || !password) {
 		return res.json({ message: "fill empty fields" });
 	} else {
-		db.query("SELECT `name` FROM users WHERE `name` = ?", [name], async (err, result) => {
-			if (err) {
-				throw err;
-			} else if (
-				!result[0] ||
-				(await bcrypt.compare(result[0].password, password, (err) => {
-					console.log(result[0]);
-				}))
-			) {
-				return res.json({ message: "incorrect username or password" });
+		db.query("SELECT id, name, password FROM users WHERE name = ?", [name], async (err, result) => {
+			if (!result[0]) {
+				res.json({ message: "incorrect name" });
+			} else if (!(await bcrypt.compare(password, result[0].password))) {
+				res.json({ message: "incorrect password" });
 			} else {
-				const token = jwt.sign({ id: result[0].id }, process.env.JWT_SECRET, {
-					expiresIn: process.env.JWT_EXPIRES,
-					httpOnly: true,
-				});
+				const sessionToken = uuidv4();
+				sessions[sessionToken] = { name, userId: result[0].id };
 
 				const cookieOptions = {
-					expiresIn: new Date(Date.now() + process.env.COOKIE_EXPIRES * 24 * 60 * 60 * 1000),
+					maxAge: process.env.COOKIE_EXPIRES * 24 * 60 * 60 * 1000,
 					httpOnly: true,
 				};
 
-				res.cookie("userRegistered", token, cookieOptions);
+				res.cookie("session-token", sessionToken, cookieOptions);
 
-				return res.json({ message: "user logged in" });
+				return res.json({ message: "logged in", id: result[0].id });
 			}
 		});
 	}
