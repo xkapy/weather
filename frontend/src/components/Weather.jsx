@@ -8,7 +8,8 @@ const Weather = () => {
 	const [time, setTime] = useState(new Date());
 	const [city, setCity] = useState("New York");
 	const [message, setMessage] = useState("");
-	const apiKey = import.meta.env.VITE_APP_API_KEY;
+	// const apiKey = import.meta.env.VITE_APP_API_KEY;
+	const apiKey = "d8bbc30f35a10a28d22aaea01aef61c3";
 
 	const formRef = useRef();
 
